@@ -1,8 +1,8 @@
 {
-  "name": "bytic/form-tinymce",
+  "name": "bytic/form-html-editors",
   "type": "library",
-  "description": "Admin interface package for bytic framework",
-  "homepage": "https://github.com/bytic/form-tinymce",
+  "description": "WYSIWYG editor for bytic forms ",
+  "homepage": "https://github.com/bytic/form-html-editors",
   "license": "MIT",
   "authors": [
     {
@@ -12,19 +12,20 @@
   ],
   "autoload": {
     "psr-4": {
-      "ByTIC\\FormTinymce\\": "src"
+      "ByTIC\\Form\\HtmlEditors\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "ByTIC\\FormTinymce\\Tests\\": "tests/src",
-      "ByTIC\\FormTinymce\\Tests\\Fixtures\\": "tests/fixtures"
+      "ByTIC\\Form\\HtmlEditors\\Tests\\": "tests/src",
+      "ByTIC\\Form\\HtmlEditors\\Tests\\Fixtures\\": "tests/fixtures"
     }
   },
   "require": {
     "php": "^7.2|^8.0"
   },
   "require-dev": {
+    "bytic/form": "^1.0",
     "tinymce/tinymce": "^4.8|^5.0",
     "bytic/phpqatools": "^1.0",
     "mockery/mockery": "^1.2"
