@@ -13,7 +13,13 @@
   "autoload": {
     "psr-4": {
       "ByTIC\\Form\\HtmlEditors\\": "src"
-    }
+    },
+    "classmap": [
+      "src/Form"
+    ],
+    "files": [
+      "src/functions/helpers.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
@@ -22,10 +28,12 @@
     }
   },
   "require": {
-    "php": "^7.2|^8.0"
+    "php": "^7.2|^8.0",
+    "bytic/config": "^1.0"
   },
   "require-dev": {
     "bytic/form": "^1.0",
+    "ezyang/htmlpurifier": "^4.0",
     "tinymce/tinymce": "^4.8|^5.0",
     "bytic/phpqatools": "^1.0",
     "mockery/mockery": "^1.2"
