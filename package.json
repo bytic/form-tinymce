@@ -1,0 +1,22 @@
+{
+  "name": "bytic-form-tinymce",
+  "version": "0.0.1",
+  "description": " ",
+  "private": true,
+  "author": "Gabriel Solomon",
+  "license": "proprietary",
+  "scripts": {
+    "dev": "yarn run development",
+    "development": "yarn encore dev",
+    "prod": "yarn run production",
+    "production": "yarn encore prod"
+  },
+  "dependencies": {
+    "tinymce": "^5.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0",
+    "@symfony/webpack-encore": "^1.2",
+    "sass-loader": "^11.0"
+  }
+}

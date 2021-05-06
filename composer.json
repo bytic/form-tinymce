@@ -1,0 +1,32 @@
+{
+  "name": "bytic/form-tinymce",
+  "type": "library",
+  "description": "Admin interface package for bytic framework",
+  "homepage": "https://github.com/bytic/form-tinymce",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ByTIC\\FormTinymce\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ByTIC\\FormTinymce\\Tests\\": "tests/src",
+      "ByTIC\\FormTinymce\\Tests\\Fixtures\\": "tests/fixtures"
+    }
+  },
+  "require": {
+    "php": "^7.2|^8.0"
+  },
+  "require-dev": {
+    "tinymce/tinymce": "^4.8|^5.0",
+    "bytic/phpqatools": "^1.0",
+    "mockery/mockery": "^1.2"
+  }
+}
