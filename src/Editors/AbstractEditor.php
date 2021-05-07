@@ -2,8 +2,8 @@
 
 namespace ByTIC\Form\HtmlEditors\Editors;
 
+use ByTIC\Form\HtmlEditors\Frameworks\AbstractFramework\AbstractFramework;
 use HTMLPurifier;
-use HTMLPurifier_Config;
 
 /**
  * Class AbstractEditor
@@ -15,36 +15,52 @@ abstract class AbstractEditor
     public const EDITOR_SIMPLE = 'simple';
     public const EDITOR_MINI = 'mini';
 
-    protected $plugins = [];
+    public $name = '';
+
+    protected $selector = null;
+
+    protected $plugins = null;
 
     protected $filter;
 
-    protected $allowedTags = [];
-    protected $allowedAttributes = [];
+    protected $extra = [];
+
+    /**
+     * @var AbstractFramework
+     */
+    protected $framework;
+
+    /**
+     * @param array $config
+     */
+    public function fill(array $config = [])
+    {
+        foreach ($config as $name => $value) {
+            $method = 'set' . ucfirst($name);
+            if (method_exists($this, $name)) {
+                $this->{$method}($value);
+            } elseif (property_exists($this, $name)) {
+                $this->{$name} = $value;
+            } else {
+                $this->extra[$name] = $value;
+            }
+        }
+    }
 
     /**
      * @return array
      */
-    public function getPlugins(): array
+    public function getPlugins(): ?array
     {
         return $this->plugins;
     }
 
     /**
-     * @param array $plugins
+     * @param array|null $plugins
      */
-    public function setPlugins(array $plugins): void
+    public function setPlugins(?array $plugins): void
     {
         $this->plugins = $plugins;
-    }
-
-    /**
-     * @param $name
-     * @param array $options
-     */
-    public function addPlugin($name, $options = [])
-    {
-        $this->plugins[$name] = $options;
     }
 
     /**
@@ -52,14 +68,6 @@ abstract class AbstractEditor
      */
     protected function getFilter(): HTMLPurifier
     {
-        if (!$this->filter) {
-            $config = HTMLPurifier_Config::createDefault();
-            $config->set('HTML.AllowedElements', $this->allowedTags);
-            $config->set('HTML.AllowedAttributes', $this->allowedAttributes);
-            $purifier = new HTMLPurifier($config);
-            $this->filter = $purifier;
-        }
-
         return $this->filter;
     }
 
@@ -75,17 +83,44 @@ abstract class AbstractEditor
     }
 
     /**
-     * @param array $config
+     * @return null
      */
-    public function fill(array $config = [])
+    public function getSelector()
     {
-        foreach ($config as $name => $value) {
-            $method = 'set' . ucfirst($name);
-            if (method_exists($this, $name)) {
-                $this->{$method}($value);
-            } else {
-                $this->{$name} = $value;
-            }
+        return $this->selector;
+    }
+
+    /**
+     * @return AbstractFramework
+     */
+    public function getFramework()
+    {
+        if (!is_object($this->framework)) {
+            $this->framework = form_html_framework();
         }
+        return $this->framework;
+    }
+
+    /**
+     * @param mixed $framework
+     */
+    public function setFramework($framework): void
+    {
+        if (is_string($framework)) {
+            $framework = form_html_framework($framework);
+        }
+        $this->framework = $framework;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function configuration()
+    {
+        $framework = $this->getFramework();
+        $return = new \stdClass();
+        $return->framework = $framework->getName();
+        $return->config = $this->getFramework()->configurationEditor($this);
+        return $return;
     }
 }

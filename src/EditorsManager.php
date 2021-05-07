@@ -31,7 +31,8 @@ class EditorsManager
      */
     public function editors()
     {
-        $configuredEditors = $this->getPackageConfig('editors')->toArray();
+        $configuredEditors = $this->getPackageConfig('editors',[]);
+        $configuredEditors = is_object($configuredEditors) ? $configuredEditors->toArray() : $configuredEditors;
 
         foreach ($configuredEditors as $name => $data) {
             $name = is_int($name) ? $data : $name;
@@ -108,8 +109,11 @@ class EditorsManager
     protected function configuration($name): array
     {
         $configuration = $this->getPackageConfig('editors');
+
         $configuration = Arr::get($configuration, $name, []);
         $configuration = is_object($configuration) ? $configuration->toArray() : $configuration;
+        $configuration['name'] = $name;
+
         if (!isset($configuration['filter']) && in_array($name, self::DEFAULT_EDITORS)) {
             $configuration['filter'] = $name;
         }

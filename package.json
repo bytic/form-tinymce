@@ -15,8 +15,11 @@
     "tinymce": "^5.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0",
     "@symfony/webpack-encore": "^1.2",
+    "file-loader": "^6.2",
+    "core-js": "^3.12",
+    "cross-env": "^7.0",
+    "node-sass": "^5.0",
     "sass-loader": "^11.0"
   }
 }

@@ -1,0 +1,12 @@
+{
+  "entrypoints": {
+    "html-editors": {
+      "css": [
+        "/dist/html-editors.css"
+      ],
+      "js": [
+        "/dist/html-editors.js"
+      ]
+    }
+  }
+}

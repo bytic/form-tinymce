@@ -29,6 +29,7 @@
   },
   "require": {
     "php": "^7.2|^8.0",
+    "ext-json": "*",
     "bytic/config": "^1.0"
   },
   "require-dev": {

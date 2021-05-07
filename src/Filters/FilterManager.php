@@ -23,7 +23,7 @@ class FilterManager
      */
     public function filter($name = null)
     {
-        $name = $this->parseFilterName($name);
+        $name = $this->parseName($name);
 
         if (!isset($this->filters[$name])) {
             $filter = $this->make($name);
@@ -37,7 +37,7 @@ class FilterManager
      * @param $name
      * @return string|null
      */
-    protected function parseFilterName($name): ?string
+    protected function parseName($name): ?string
     {
         return $name ?: 'base';
     }

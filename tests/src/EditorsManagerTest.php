@@ -2,6 +2,7 @@
 
 namespace ByTIC\Form\HtmlEditors\Tests;
 
+use ByTIC\Form\HtmlEditors\Editors\AbstractEditor;
 use ByTIC\Form\HtmlEditors\Editors\BaseEditor;
 use ByTIC\Form\HtmlEditors\EditorsManager;
 
@@ -24,8 +25,9 @@ class EditorsManagerTest extends AbstractTest
         EditorsManager::setConfig(['form-html-editors' => require TEST_FIXTURE_PATH . '/config/form-html-editors.php']);
         $manager = new EditorsManager();
 
-        $editor = $manager->editor(\ByTIC\Form\HtmlEditors\Editors\AbstractEditor::EDITOR_MINI);
+        $editor = $manager->editor(AbstractEditor::EDITOR_MINI);
         self::assertInstanceOf(BaseEditor::class, $editor);
+        self::assertSame(AbstractEditor::EDITOR_MINI, $editor->name);
         self::assertSame(['test1', 'test2'], $editor->getPlugins());
 
         $editors = $manager->editors();
