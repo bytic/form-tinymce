@@ -19,7 +19,10 @@ class AssetsEditorsInit
     {
         $assetName = static::protectAssetName($assetName);
         $assetEntry = Assets::entry();
-        Assets::entry()->scripts()->addRaw(form_html_view_init());
+
+        $raw = form_html_view_init();
+        $raw = str_replace(['<script type="text/javascript">','</script>'], '', $raw);
+        Assets::entry()->scripts()->addRaw($raw);
         if (assets_manager()->hasEntrypoint($assetName)) {
             $assetEntry->addFromWebpack($assetName);
             Assets::entry()->scripts()->add($base . '/init.js');
