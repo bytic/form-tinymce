@@ -15,6 +15,7 @@
       "ByTIC\\Form\\HtmlEditors\\": "src"
     },
     "classmap": [
+      "legacy",
       "src/Form"
     ],
     "files": [
@@ -34,6 +35,7 @@
   },
   "require-dev": {
     "bytic/form": "^1.0",
+    "bytic/view": "^1.0",
     "ezyang/htmlpurifier": "^4.0",
     "tinymce/tinymce": "^4.8|^5.0",
     "bytic/phpqatools": "^1.0",
