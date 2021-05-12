@@ -3,7 +3,6 @@
 namespace ByTIC\Form\HtmlEditors\Editors;
 
 use ByTIC\Form\HtmlEditors\Frameworks\AbstractFramework\AbstractFramework;
-use HTMLPurifier;
 
 /**
  * Class AbstractEditor
@@ -21,7 +20,10 @@ abstract class AbstractEditor
 
     protected $plugins = null;
 
-    protected $filter;
+    /**
+     * @var mixed
+     */
+    protected $filter = null;
 
     protected $extra = [];
 
@@ -63,10 +65,7 @@ abstract class AbstractEditor
         $this->plugins = $plugins;
     }
 
-    /**
-     * @return HTMLPurifier
-     */
-    protected function getFilter(): HTMLPurifier
+    protected function getFilter()
     {
         return $this->filter;
     }
@@ -76,10 +75,16 @@ abstract class AbstractEditor
      */
     public function setFilter($filter): void
     {
-        if (is_string($filter)) {
-            $filter = form_html_filter($filter);
-        }
         $this->filter = $filter;
+    }
+
+    /**
+     * @param $dirty
+     * @return string|string[]
+     */
+    public function clean($dirty)
+    {
+        return \ByTIC\Purifier\Utility\Purifier::clean($dirty, $this->getFilter());
     }
 
     /**

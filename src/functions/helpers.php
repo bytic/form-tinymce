@@ -35,21 +35,6 @@ if (!function_exists('form_html_editors')) {
     }
 }
 
-if (!function_exists('form_html_filter')) {
-    /**
-     * @param null $name
-     * @return HTMLPurifier
-     */
-    function form_html_filter($name = null): HTMLPurifier
-    {
-        $container = \Nip\Container\Utility\Container::get();
-
-        /** @var \ByTIC\Form\HtmlEditors\Filters\FilterManager $manager */
-        $manager = $container->get(\ByTIC\Form\HtmlEditors\Filters\FilterManager::class);
-
-        return $manager->filter($name);
-    }
-}
 if (!function_exists('form_html_framework')) {
     /**
      * @param null $name
