@@ -22,6 +22,5 @@ abstract class AbstractFramework
      * @param AbstractEditor $editor
      * @return mixed
      */
-    abstract function configurationEditor(AbstractEditor $editor);
+    abstract public function configurationEditor(AbstractEditor $editor);
 }
-

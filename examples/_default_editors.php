@@ -12,8 +12,8 @@ foreach ($editors as $editor) { ?>
             <div class="col-4">
                 <pre style="text-wrap: normal"><code><?php
                         echo htmlentities(
-                            '<textarea class="form-control" data-editor-name="' . $editor->name . '" placeholder="Leave a comment here" ></textarea>'
-                        );
+    '<textarea class="form-control" data-editor-name="' . $editor->name . '" placeholder="Leave a comment here" ></textarea>'
+);
                         ?></code></pre>
             </div>
             <div class="col-8">
