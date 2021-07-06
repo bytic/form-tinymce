@@ -25,7 +25,6 @@ class AssetsEditorsInit
         Assets::entry()->scripts()->addRaw($raw);
         if (assets_manager()->hasEntrypoint($assetName)) {
             $assetEntry->addFromWebpack($assetName);
-            Assets::entry()->scripts()->add($base . '/init.js');
             return;
         }
         if (\Nip\Utility\Url::isValid($base)) {
