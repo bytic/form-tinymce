@@ -31,7 +31,7 @@ class EditorsManager
      */
     public function editors()
     {
-        $configuredEditors = $this->getPackageConfig('editors',[]);
+        $configuredEditors = $this->getPackageConfig('editors', []);
         $configuredEditors = is_object($configuredEditors) ? $configuredEditors->toArray() : $configuredEditors;
 
         foreach ($configuredEditors as $name => $data) {

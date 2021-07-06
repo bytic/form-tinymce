@@ -16,7 +16,7 @@ class TinyMCE extends AbstractFramework
     /**
      * @param AbstractEditor $editor
      */
-    function configurationEditor(AbstractEditor $editor): \stdClass
+    public function configurationEditor(AbstractEditor $editor): \stdClass
     {
         $config = [];
         $plugins = $editor->getPlugins();
@@ -46,7 +46,7 @@ class TinyMCE extends AbstractFramework
             'height' => '40vh',
         ];
         switch ($name) {
-            case AbstractEditor::EDITOR_FULL :
+            case AbstractEditor::EDITOR_FULL:
                 $return['plugins'] = [
                     "advlist autolink autosave link image lists charmap preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking table  directionality emoticons template  paste fullpage"
                 ];
@@ -55,7 +55,7 @@ class TinyMCE extends AbstractFramework
                 $return['toolbar3'] = "table | hr  | subscript superscript | charmap emoticons | ltr rtl  | visualchars visualblocks nonbreaking template pagebreak restoredraft";
                 break;
 
-            case AbstractEditor::EDITOR_SIMPLE :
+            case AbstractEditor::EDITOR_SIMPLE:
                 $return['plugins'] = [
                     "advlist autolink lists link image charmap anchor searchreplace visualblocks code fullscreen insertdatetime media table  paste"
                 ];
@@ -63,7 +63,7 @@ class TinyMCE extends AbstractFramework
                 $return['toolbar2'] = "bullist numlist outdent indent | link image media | forecolor backcolor emoticons";
                 break;
 
-            case AbstractEditor::EDITOR_MINI :
+            case AbstractEditor::EDITOR_MINI:
                 $return['plugins'] = [
                     "advlist autolink link anchor searchreplace visualblocks code fullscreen table  paste "
                 ];
