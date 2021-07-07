@@ -10,6 +10,7 @@ import 'tinymce/themes/silver';
 // Any plugins you want to use has to be imported
 import 'tinymce/plugins/advlist/plugin';
 import 'tinymce/plugins/autolink/plugin';
+import 'tinymce/plugins/autoresize/plugin';
 import 'tinymce/plugins/autosave/plugin';
 import 'tinymce/plugins/link/plugin';
 import 'tinymce/plugins/image/plugin';

@@ -43,16 +43,19 @@ class TinyMCE extends AbstractFramework
             'menubar' => false,
             'toolbar_sticky' => true,
             'media_live_embeds' => true,
-            'height' => '40vh',
+            'height' => 400,
+            'theme_advanced_resizing_min_height' => 300,
         ];
         switch ($name) {
             case AbstractEditor::EDITOR_FULL:
                 $return['plugins'] = [
-                    "advlist autolink autosave link image lists charmap preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking table  directionality emoticons template  paste fullpage"
+                    "advlist autolink autosave autoresize link image lists charmap preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking table  directionality emoticons template  paste fullpage"
                 ];
                 $return['toolbar1'] = "code fullscreen preview | undo redo | cut copy paste |  bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | removeformat ";
                 $return['toolbar2'] = "styleselect fontsizeselect | searchreplace | bullist numlist | outdent indent blockquote |  link unlink anchor image media  | inserttime  | forecolor backcolor";
                 $return['toolbar3'] = "table | hr  | subscript superscript | charmap emoticons | ltr rtl  | visualchars visualblocks nonbreaking template pagebreak restoredraft";
+                $return['min_height'] = 400;
+//                $return['theme_advanced_resizing_min_height'] = 1000;
                 break;
 
             case AbstractEditor::EDITOR_SIMPLE:
