@@ -10,6 +10,9 @@ use ByTIC\Form\HtmlEditors\Frameworks\AbstractFramework\AbstractFramework;
  */
 abstract class AbstractEditor
 {
+    use Traits\HasConfigurationTrait;
+    use Traits\HasPluginsTrait;
+
     public const EDITOR_FULL = 'full';
     public const EDITOR_SIMPLE = 'simple';
     public const EDITOR_MINI = 'mini';
@@ -17,8 +20,6 @@ abstract class AbstractEditor
     public $name = '';
 
     protected $selector = null;
-
-    protected $plugins = null;
 
     /**
      * @var mixed
@@ -49,21 +50,6 @@ abstract class AbstractEditor
         }
     }
 
-    /**
-     * @return array
-     */
-    public function getPlugins(): ?array
-    {
-        return $this->plugins;
-    }
-
-    /**
-     * @param array|null $plugins
-     */
-    public function setPlugins(?array $plugins): void
-    {
-        $this->plugins = $plugins;
-    }
 
     protected function getFilter()
     {
@@ -115,17 +101,5 @@ abstract class AbstractEditor
             $framework = form_html_framework($framework);
         }
         $this->framework = $framework;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function configuration()
-    {
-        $framework = $this->getFramework();
-        $return = new \stdClass();
-        $return->framework = $framework->getName();
-        $return->config = $this->getFramework()->configurationEditor($this);
-        return $return;
     }
 }

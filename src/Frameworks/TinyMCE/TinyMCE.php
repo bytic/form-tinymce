@@ -18,7 +18,7 @@ class TinyMCE extends AbstractFramework
      */
     public function configurationEditor(AbstractEditor $editor): \stdClass
     {
-        $config = [];
+        $config = $editor->getEditorConfig();
         $plugins = $editor->getPlugins();
         if ($plugins) {
             $config['plugins'] = $plugins;
@@ -45,6 +45,7 @@ class TinyMCE extends AbstractFramework
             'media_live_embeds' => true,
             'height' => 400,
             'theme_advanced_resizing_min_height' => 300,
+            'plugins' => []
         ];
         switch ($name) {
             case AbstractEditor::EDITOR_FULL:
