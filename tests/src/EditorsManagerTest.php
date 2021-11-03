@@ -18,6 +18,7 @@ class EditorsManagerTest extends AbstractTest
         $filter = $manager->editor('full');
 
         self::assertInstanceOf(BaseEditor::class, $filter);
+        self::assertSame('full', $filter->getFilter());
     }
 
     public function test_editor_from_config()

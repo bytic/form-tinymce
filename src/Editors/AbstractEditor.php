@@ -12,6 +12,7 @@ abstract class AbstractEditor
 {
     use Traits\HasConfigurationTrait;
     use Traits\HasPluginsTrait;
+    use Traits\HasFilterTrait;
 
     public const EDITOR_FULL = 'full';
     public const EDITOR_SIMPLE = 'simple';
@@ -21,10 +22,6 @@ abstract class AbstractEditor
 
     protected $selector = null;
 
-    /**
-     * @var mixed
-     */
-    protected $filter = null;
 
     protected $extra = [];
 
@@ -48,29 +45,6 @@ abstract class AbstractEditor
                 $this->extra[$name] = $value;
             }
         }
-    }
-
-
-    protected function getFilter()
-    {
-        return $this->filter;
-    }
-
-    /**
-     * @param mixed $filter
-     */
-    public function setFilter($filter): void
-    {
-        $this->filter = $filter;
-    }
-
-    /**
-     * @param $dirty
-     * @return string|string[]
-     */
-    public function clean($dirty)
-    {
-        return \ByTIC\Purifier\Utility\Purifier::clean($dirty, $this->getFilter());
     }
 
     /**
