@@ -12,7 +12,7 @@
     "production": "yarn encore prod"
   },
   "dependencies": {
-    "tinymce": "^5.0"
+    "tinymce": "^6.8.4"
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^1.2",
